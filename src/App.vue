@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import NomeDoApp from './components/NomeDoApp.vue'
 </script>
 
 <template>
@@ -8,13 +8,15 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="Bem-Vindo!" />
+      <NomeDoApp msg="Bem-Vindo!" />
 
       <nav>
         <RouterLink to="/">Login</RouterLink>
-        <RouterLink to="/about">Cadastrar</RouterLink>
+        <RouterLink to="/Cadastro">Cadastrar</RouterLink>
       </nav>
     </div>
+    
+    
   </header>
 
   <RouterView />
@@ -82,4 +84,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style>./components/NomeDoApp.vue

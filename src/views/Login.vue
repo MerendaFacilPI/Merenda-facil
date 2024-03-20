@@ -1,31 +1,30 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="cadastro">
-    <h1>Faça seu Cadastro</h1>
+  <div class="login">
+    <h1>Faça seu Login</h1>
     <br>
-   <select type="text" class="caixa1">
-    <option>Qual seu Cargo?</option>
-    <option>Administrador</option>
-    <option>Secretaria</option>
-   </select>
-   <br>
    <select type="text" class="caixa1">
     <option>Qual seu Email?</option>
-    <option>Administrador@gmail.com</option>
-    <option>Secretaria@gmail.com</option>
+    <option>administrador@gmail.com</option>
+    <option>secretaria@gmail.com</option>
    </select>
     <br>
-    <input type="password" class="senha" placeholder="Sua senha">
+    <input type="password" class="senha" placeholder="Digite sua senha">
     <br>
-    <button class="button">Registrar</button>
-    <br>
-    <p>Ao realizar seu cadastro volte a tela de Login.</p>
+    <button class="button">Entrar</button>
+    <p>Esqueseu sua senha?<a href="#">Clique Aqui.</a></p>
 
   </div>
 </template>
 
 <style scoped>
 
-.cadastro {
+.p {
+  font-size: 50px;
+  margin-top: 80%;
+}
+
+.login {
   text-align: center;
 }
 
@@ -35,7 +34,6 @@
   margin-top: 10px;
   border-radius: 3ch;
 }
-
 
 .senha {
   width: 300px;
@@ -60,11 +58,5 @@
   color: white;
   transform: scale(1.2)
 }
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+
 </style>
