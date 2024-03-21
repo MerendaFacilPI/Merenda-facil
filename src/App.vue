@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import NomeDoApp from './components/NomeDoApp.vue'
+
 </script>
 
 <template>
@@ -14,11 +15,11 @@ import NomeDoApp from './components/NomeDoApp.vue'
         <RouterLink to="/">Login</RouterLink>
         <RouterLink to="/Cadastro">Cadastrar</RouterLink>
       </nav>
+      
     </div>
     
-    
   </header>
-
+  
   <RouterView />
 </template>
 
