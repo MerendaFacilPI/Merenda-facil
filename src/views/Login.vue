@@ -1,4 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+<script setup lang="ts">
+
+</script>
 <template>
   <div class="login">
     <h1>Faça seu Login</h1>
@@ -13,6 +16,7 @@
     <br>
     <button class="button">Entrar</button>
     <p>Esqueseu sua senha?<a href="#">Clique Aqui.</a></p>
+    <RouterLink to="/Usuario">Tela do Usuario</RouterLink><!-- Para teste enquanto o button não esta pronto(Back-End) (Estava tentando criar uma rota (foi até criada) com o RouterLinnk para seguir com aplicações Front-End em outras paginas 'sem' a aplicação do "Bem-Vindo! Merenda Fácil e logo" nas outras paginas, mais não consegue) -->
    
   </div>
 </template>

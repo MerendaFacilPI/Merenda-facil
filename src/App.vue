@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import NomeDoApp from './components/NomeDoApp.vue'
+
+
 
 </script>
 
@@ -9,8 +9,13 @@ import NomeDoApp from './components/NomeDoApp.vue'
     <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <NomeDoApp msg="Bem-Vindo!" />
-
+      <h1>Bem- Vindo!</h1>
+      <div class="greetings">
+    <h3>
+     Merenda Fácil
+    </h3>
+  </div>
+    
       <nav>
         <RouterLink to="/">Login</RouterLink>
         <RouterLink to="/Cadastro">Cadastrar</RouterLink>
@@ -24,6 +29,30 @@ import NomeDoApp from './components/NomeDoApp.vue'
 </template>
 
 <style scoped>
+
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  text-align: center;
+  top: -10px;
+}
+
+h3 {
+  font-size: 2rem;
+  color: rgb(48, 164, 231);
+}
+
+.greetings h1,
+.greetings h3 {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+    text-align: left;
+  }
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
