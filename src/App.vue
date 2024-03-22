@@ -9,7 +9,7 @@
     <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <h1>Bem- Vindo!</h1>
+      <h1>Bem-Vindo!</h1>
       <div class="greetings">
     <h3>
      Merenda Fácil
