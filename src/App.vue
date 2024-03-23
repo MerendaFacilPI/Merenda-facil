@@ -17,8 +17,8 @@
   </div>
     
       <nav>
-        <RouterLink to="/">Login</RouterLink>
-        <RouterLink to="/Cadastro">Cadastrar</RouterLink>
+      
+        
       </nav>
       
     </div>

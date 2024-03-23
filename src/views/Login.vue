@@ -15,8 +15,8 @@
     <input type="password" class="senha" placeholder="Digite sua senha">
     <br>
     <button class="button">Entrar</button>
-    <p>Esqueseu sua senha?<a href="#">Clique Aqui.</a></p>
-    <RouterLink to="/Usuario">Tela do Usuario</RouterLink><!-- Para teste enquanto o button não esta pronto(Back-End) (Estava tentando criar uma rota (foi até criada) com o RouterLinnk para seguir com aplicações Front-End em outras paginas 'sem' a aplicação do "Bem-Vindo! Merenda Fácil e logo" nas outras paginas, mais não consegue) -->
+    <p>Esqueseu sua senha?<a href="index2.html">Clique Aqui.</a></p>
+    <RouterLink to="/index">Tela do Usuario</RouterLink><!-- Para teste enquanto o button não esta pronto(Back-End) (Estava tentando criar uma rota (foi até criada) com o RouterLinnk para seguir com aplicações Front-End em outras paginas 'sem' a aplicação do "Bem-Vindo! Merenda Fácil e logo" nas outras paginas, mais não consegue) -->
    
   </div>
 </template>
