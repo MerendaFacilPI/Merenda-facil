@@ -3,6 +3,7 @@
 
 </script>
 <template>
+  
   <div class="login">
     <h1>Faça seu Login</h1>
     <br>
