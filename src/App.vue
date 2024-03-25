@@ -1,8 +1,3 @@
-<script setup lang="ts">
-
-
-
-</script>
 
 <template>
   <header>
@@ -15,11 +10,6 @@
      Merenda Fácil
     </h3>
   </div>
-    
-      <nav>
-      
-        
-      </nav>
       
     </div>
     
