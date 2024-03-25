@@ -1,107 +1,47 @@
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <h1>Bem-Vindo!</h1>
-      <div class="greetings">
-    <h3>
-     Merenda Fácil
-    </h3>
+  <div class="container">
+    <RouterView />
+    <nav class="container-rota">
+      <RouterLink to="/">Login</RouterLink>
+      <RouterLink to="/Usuario">Tela do Usuário</RouterLink>
+    </nav>
   </div>
-      
-    </div>
-    
-  </header>
-  
-  <RouterView />
 </template>
 
 <style scoped>
-
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  text-align: center;
-  top: -10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Define a altura mínima do contêiner como 100% da altura da viewport */
+  position: relative; /* Posição relativa para que o posicionamento absoluto da barra de navegação funcione */
 }
 
-h3 {
-  font-size: 2rem;
-  color: rgb(48, 164, 231);
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+.container-rota {
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Move a navegação para o centro horizontal */
+  transform: translateX(-50%); /* Centraliza horizontalmente */
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  color: white; /* Cor do texto */
+  padding: 10px 55px;
+  display: flex;
+  justify-content: center;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.container-rota a {
+  padding: 0 10px; /* Espaçamento entre os links */
+  text-decoration: none;
+  color: white;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
+.container-rota a:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse sobre os links */
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  .container-rota {
+    justify-content: flex-start; /* Alinha os links à esquerda em telas maiores */
   }
 }
 </style>./components/NomeDoApp.vue

@@ -3,33 +3,37 @@
 
 </script>
 <template>
-  
   <div class="login">
-    <h1>Faça seu Login</h1>
+    <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="122" height="122"/>
+    <h1>Merenda Fácil</h1>
+    <h2>Faça seu Login</h2>
     <br>
-   <select type="text" class="caixa1">
-    <option>Qual seu Email?</option>
-    <option>administrador@gmail.com</option>
-    <option>secretaria@gmail.com</option>
-   </select>
-    <br>
+    <select type="text" class="caixa1">
+      <option>Qual seu Email?</option>
+      <option>administrador@gmail.com</option>
+      <option>secretaria@gmail.com</option>
+    </select>
+    
     <input type="password" class="senha" placeholder="Digite sua senha">
-    <br>
+    
     <button class="button">Entrar</button>
-    <p>Esqueseu sua senha?<a href="index2.html">Clique Aqui.</a></p>
-    <RouterLink to="/index">Tela do Usuario</RouterLink><!-- Para teste enquanto o button não esta pronto(Back-End) (Estava tentando criar uma rota (foi até criada) com o RouterLinnk para seguir com aplicações Front-End em outras paginas 'sem' a aplicação do "Bem-Vindo! Merenda Fácil e logo" nas outras paginas, mais não consegue) -->
-   
+    <p>Esqueceu sua senha?<a href="">Clique Aqui.</a></p>
   </div>
 </template>
 
 <style scoped>
-
-.p {
-  font-size: 50px;
-  margin-top: 80%;
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Defina uma altura mínima de 100% da altura da viewport */
 }
 
-.login {
+h1 {
+  color: rgb(48, 164, 231);
+  font-weight: 500;
+  font-size: 2.6rem;
   text-align: center;
 }
 
@@ -47,7 +51,7 @@
   border-radius: 3ch;
 }
 
-.button{
+.button {
   width: 200px;
   padding: 10px;
   margin-top: 10px;
@@ -58,10 +62,14 @@
   transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
   cursor: pointer;
 }
-.button:hover{
+
+.button:hover {
   background-color: rgb(48, 164, 231);
   color: white;
-  transform: scale(1.2)
+  transform: scale(1.2);
 }
 
+p {
+  font-size: 1rem;
+}
 </style>
