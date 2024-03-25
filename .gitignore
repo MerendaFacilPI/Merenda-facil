@@ -28,3 +28,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+jsconfig.json
+src/App.vue
+src/App.vue
