@@ -6,15 +6,16 @@
     <header class="menu-topo">
         <nav class="nav-bar">
             <div class="logo">
+                <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="110" height="70"/>
                 <h1>Merenda Fácil</h1>
             </div>
-
             <div class="nav-list">
                 <ul>
                     <li class="nav-item"><a href="TelaDoUsuario.vue" class="nav-link">Inicio</a></li>
                     <li class="nav-item"><a href="RedefinicaoDeSenha.vue" class="nav-link">Redefina sua senha</a></li>
                     <li class="nav-item"><a href="CadastroDeAluno.vue" class="nav-link">cadastro de alunos</a></li>
                     <li class="nav-item"><a href="Relatorio.vue" class="nav-link">Relatorio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Sair</a></li>
                 </ul>
             </div>
 
@@ -29,6 +30,7 @@
                     <li class="nav-item"><a href="#" class="nav-link">Redefina sua senha</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">cadastro de alunos</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Relatorio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Sair</a></li>
             </ul>
         
         </div>
@@ -38,16 +40,18 @@
 <style scoped>
 
 /*Edições dos estilos da parte superior */
-.menu-topo {
-   
+.menu-topo { 
+    padding: 1rem;
+    margin: 0;
     background-color: #24252a;
-    box-shadow: 0px 3px 10px #5c4a4a;
+    box-shadow: 0px 3px 10px #ded7d72f;
 }
 
 .nav-bar {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 6rem;
+    padding: 1rem;
+    margin: 0;
 }
 
 .logo {
@@ -57,7 +61,7 @@
 
 .logo h1 {
     font-size: 30px;
-    color: #fff;
+    color: rgb(48, 164, 231);
 }
 
 .nav-list {
