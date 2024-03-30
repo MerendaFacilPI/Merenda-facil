@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <h2>Ola</h2>
+    <h2>Relatorio</h2>
 </template>
 
 <script>

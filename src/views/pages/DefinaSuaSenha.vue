@@ -6,7 +6,7 @@ export default{
 }
 </script>
 <template>
-   <div><h1>Cadantro de Alunos(a)</h1></div>
+   <div><h1>Altere Sua Senha</h1></div>
 </template>
 
 <style scoped>

@@ -1,12 +1,16 @@
 <script setup lang="js">
   function menuShow() {
     let menuMobile = document.querySelector('.mobile-menu');
+    let icon = document.querySelector('.icon');
+
     if (menuMobile.classList.contains('open')) {
         menuMobile.classList.remove('open');
-        document.querySelector('.icon').src = "..assets/img/menu_white_36dp.svg";
+        // Alternar o ícone ao fechar o menu
+        icon.src = "@/assets/img/menu_white_36dp.svg";
     } else {
         menuMobile.classList.add('open');
-        document.querySelector('.icon').src = "..assets/img/close_white_36dp.svg";
+        // Alternar o ícone ao abrir o menu
+        icon.src = "@/assets/img/close_white_36dp.svg";
     }
 }
 </script>
@@ -19,28 +23,30 @@
                 <h1>Merenda Fácil</h1>
             </div>
             <div class="nav-list">
-                <ul>
-                    <li class="nav-item"><a href="RedefinicaoDeSenha.vue" class="nav-link">Altere sua senha</a></li>
-                    <li class="nav-item"><a href="CadastroDeAluno.vue" class="nav-link">Cadastro de Aluno</a></li>
-                    <li class="nav-item"><a href="Relatorio.vue" class="nav-link">Relatorio</a></li>
+                <ul class="nav-item">
+                    <RouterLink class="nav-item" to="/Altera">Altere sua senha</RouterLink>
+                    <RouterLink class="nav-item" to="/Cadastro">Cadastro de Aluno</RouterLink>
+                    <RouterLink class="nav-item" to="/Relatorio">Relatorio</RouterLink>
                 </ul>
                 <div class="login-button">
-                <button><a href="#">Sair</a></button>
-            </div>
+                    <button><RouterLink to="/">Sair</RouterLink></button>
+                </div>
             </div>
             
-
             <div class="mobile-menu-icon">
-                <button onclick="menuShow()"><img class="icon" src="../src/assets/menu_white_36dp.svg" alt=""></button>
+                <button @click="menuShow"><img class="icon" src="@/assets/img/menu_white_36dp.svg" alt=""></button>
             </div>
         </nav>
 
         <div class="mobile-menu">
-            <ul>
-                <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Projetos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Sobre</a></li>
+            <ul class="nav-item">
+                <RouterLink class="nav-item" to="/Altera">Altere sua senha</RouterLink>
+                <RouterLink class="nav-item" to="/Cadastro">Cadastro de Aluno</RouterLink>
+                <RouterLink class="nav-item" to="/Relatorio">Relatorio</RouterLink>
             </ul>
+            <div class="login-button">
+                    <button><RouterLink to="/">Sair</RouterLink></button>
+                </div>
         </div>
     </header>
 
@@ -112,14 +118,17 @@
 
     .mobile-menu-icon {
         display: none;
+        padding-top: 1.2rem;
+        margin: 3px;
     }
+
 
     .mobile-menu {
         display: none;
     }
 
     /* Estilo do ícone do menu ao diminuir a tela */
-    @media screen and (max-width: 730px) {
+    @media screen and (max-width: 760px) {
         .nav-bar {
             padding: 1.5rem 4rem;
         }
@@ -159,8 +168,22 @@
             padding: 1rem 2rem;
         }
 
+        .mobile-menu .login-button button {
+            width: 100%;
+        } 
+
         .open {
             display: block; /* Exibe o mobile-menu quando a classe 'open' é aplicada */
+        }
+
+        /* Hide menu icon when menu is open */
+        .mobile-menu-icon .icon[src="@/assets/img/menu_white_36dp.svg"] {
+            display: none;
+        }
+        
+        /* Show close icon when menu is open */
+        .mobile-menu-icon .icon[src="@/assets/img/close_white_36dp.svg"] {
+            display: block;
         }
     }
 
