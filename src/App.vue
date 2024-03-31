@@ -24,7 +24,7 @@
   transform: translateX(-50%); /* Centraliza horizontalmente */
   width: 100%;
   color: white; /* Cor do texto */
-  padding: 10px;
+  padding: 0px;
   display: flex;
   justify-content: center;
 }

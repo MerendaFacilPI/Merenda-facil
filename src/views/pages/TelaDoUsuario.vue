@@ -1,193 +1,170 @@
 <script setup lang="js">
-  function menuShow() {
-    let menuMobile = document.querySelector('.mobile-menu');
-    let icon = document.querySelector('.icon');
 
-    if (menuMobile.classList.contains('open')) {
-        menuMobile.classList.remove('open');
-        // Alternar o ícone ao fechar o menu
-        icon.src = "@/assets/img/menu_white_36dp.svg";
-    } else {
-        menuMobile.classList.add('open');
-        // Alternar o ícone ao abrir o menu
-        icon.src = "@/assets/img/close_white_36dp.svg";
-    }
-}
 </script>
 
 <template>
-   <header>
-        <nav class="nav-bar">
-            <div class="logo">
-                <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="110" height="75"/>
-                <h1>Merenda Fácil</h1>
-            </div>
-            <div class="nav-list">
-                <ul class="nav-item">
-                    <RouterLink class="nav-item" to="/Altera">Altere sua senha</RouterLink>
-                    <RouterLink class="nav-item" to="/Cadastro">Cadastro de Aluno</RouterLink>
-                    <RouterLink class="nav-item" to="/Relatorio">Relatorio</RouterLink>
-                </ul>
-                <div class="login-button">
-                    <button><RouterLink to="/">Sair</RouterLink></button>
-                </div>
-            </div>
-            
-            <div class="mobile-menu-icon">
-                <button @click="menuShow"><img class="icon" src="@/assets/img/menu_white_36dp.svg" alt=""></button>
-            </div>
-        </nav>
-
-        <div class="mobile-menu">
-            <ul class="nav-item">
-                <RouterLink class="nav-item" to="/Altera">Altere sua senha</RouterLink>
-                <RouterLink class="nav-item" to="/Cadastro">Cadastro de Aluno</RouterLink>
-                <RouterLink class="nav-item" to="/Relatorio">Relatorio</RouterLink>
-            </ul>
-            <div class="login-button">
-                    <button><RouterLink to="/">Sair</RouterLink></button>
-                </div>
+   <nav class="menu-flutuante">
+      <div class="navbar">
+        <div class="container nav-container">
+            <input class="checkbox" type="checkbox" name="" id="" />
+            <div class="lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>  
+          <div class="logo">
+            <h1>Merenda Fácil</h1>
+          </div>
+          <div class="menu-items">
+            <li><RouterLink class="nav-item" to="/Altera">Altere sua senha</RouterLink></li>
+            <li><RouterLink class="nav-item" to="/Cadastro">Cadastro de Aluno</RouterLink></li>
+            <li><RouterLink class="nav-item" to="/Relatorio">Relatorio</RouterLink></li>
+            <li><RouterLink to="/">Sair</RouterLink></li>
+          </div>
         </div>
-    </header>
-
+      </div>
+    </nav>
     <div class="scaner">
-        <button><a href="#">Scanear</a></button>
+        <button class="button"><a href="#">Scanear</a></button>
     </div>
 </template>
 
 <style scoped>
     /* Edições dos estilos da parte superior */
-    .menu-topo { 
-        width: 100%;
-        background-color: #24252a;
-        box-shadow: 0px 3px 10px #ded7d72f;
-    }
+.container {
+  max-width: 900px;
+  width: 100%;
+}
 
-    .nav-bar {
-        display: flex;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        margin: 0;
-    }
+.navbar {
+  width: 100%;
+  box-shadow: 0 1px 4px rgba(94, 96, 110, 0.855);
+}
 
-    .logo {
-        display: flex;
-        align-items: center;
-    }
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
 
-    .logo h1 {
-        font-size: 30px;
-        color: rgb(48, 164, 231);
-    }
+.navbar .menu-items {
+  display: flex;
+}
 
-    .nav-list {
-        display: flex;
-        align-items: center;
-    }
+.navbar .nav-container li {
+  list-style: none;
+}
 
-    .nav-list ul {
-        display: flex;
-        justify-content: center;
-        list-style: none;
-    }
+.navbar .nav-container a {
+  text-decoration: none;
+  color: #f7fafc;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.7rem;
+}
 
-    .nav-item {
-        margin: 0 15px;
-    }
+.navbar .nav-container a:hover{
+    font-weight: bolder;
+}
 
-    .nav-link {
-        text-decoration: none;
-        font-size: 1.15rem;
-        color: #fff;
-        font-weight: 400;
-    }
+.nav-container {
+  display: block;
+  position: relative;
+  height: 60px;
+}
 
-    .login-button button {
-        border: none;
-        background-color: #0187a7;
-        padding: 10px 15px;
-        border-radius: 5px;
-    }
+.nav-container .checkbox {
+  position: absolute;
+  display: flex;
+  height: 32px;
+  width: 30px;
+  top: 20px;
+  left: 10px;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
 
-    .login-button button a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: 500;
-        font-size: 1.1rem;
-    }
+.nav-container .lines {
+  display: block;
+  height: 26px;
+  width: 32px;
+  position: absolute;
+  top: 17px;
+  left: 8px;
+  z-index: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    .mobile-menu-icon {
-        display: none;
-        padding-top: 1.2rem;
-        margin: 3px;
-    }
+.nav-container .lines .line {
+  display: block;
+  height: 4px; /*Largura das três linhas do menu*/
+  width: 100%; /*Comprimento das linhas do menu */
+  border-radius: 10px;
+  background: #e9ecee;
+}
+
+.nav-container .lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.nav-container .lines .line2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-container .lines .line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.navbar .menu-items {
+  padding-top: 60px;
+  height: 50vh;
+  width: 100%;
+  transform: translate(-150%);
+  display: flex;
+  flex-direction: column;
+  margin-left: -40px;
+  padding-left: 50px;
+  transition: transform 0.5s ease-in-out;
+  text-align: left;
+}
+
+.navbar .menu-items li {
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.logo {
+    margin-left: 5rem;
+    font-size: 1.2rem;
+    color: #069aef;
+    display: flex;     
+}
 
 
-    .mobile-menu {
-        display: none;
-    }
+.nav-container input[type="checkbox"]:checked ~ .menu-items {
+  transform: translateX(0);
+}
 
-    /* Estilo do ícone do menu ao diminuir a tela */
-    @media screen and (max-width: 760px) {
-        .nav-bar {
-            padding: 1.5rem 4rem;
-        }
+.nav-container input[type="checkbox"]:checked ~ .lines .line1 {
+  transform: rotate(45deg);
+}
 
-        .nav-list {
-            display: none; /* Esconde o nav-list */
-        }
+.nav-container input[type="checkbox"]:checked ~ .lines .line2 {
+  transform: scaleY(0);
+}
 
-        .mobile-menu-icon {
-            display: block;
-        }
+.nav-container input[type="checkbox"]:checked ~ .lines .line3 {
+  transform: rotate(-45deg);
+}
 
-        .mobile-menu-icon button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
-        .mobile-menu {
-            display: none; /* Oculta o mobile-menu por padrão */
-        }
-
-        .mobile-menu ul {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            padding-bottom: 1rem;
-        }
-
-        .mobile-menu .nav-item {
-            display: block;
-            padding: 1.5rem;
-        }
-
-        .mobile-menu .login-button {
-            display: block;
-            padding: 1rem 2rem;
-        }
-
-        .mobile-menu .login-button button {
-            width: 100%;
-        } 
-
-        .open {
-            display: block; /* Exibe o mobile-menu quando a classe 'open' é aplicada */
-        }
-
-        /* Hide menu icon when menu is open */
-        .mobile-menu-icon .icon[src="@/assets/img/menu_white_36dp.svg"] {
-            display: none;
-        }
-        
-        /* Show close icon when menu is open */
-        .mobile-menu-icon .icon[src="@/assets/img/close_white_36dp.svg"] {
-            display: block;
-        }
-    }
-
-    .scaner{
+.scaner{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -201,10 +178,21 @@
         border-radius: 5px;
     }
 
-    .scaner button a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: 600;
-        font-size: 1.1rem;
+    .button {
+    width: 200px;
+    padding: 10px;
+    margin-top: 10px;
+    border: solid 1px rgb(126, 126, 241);
+    border-radius: 20px;
+    color: rgb(94, 94, 133);
+    background-color: white;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+    cursor: pointer;
+    }
+
+    .button:hover {
+    background-color: rgb(48, 164, 231);
+    color: white;
+    transform: scale(1.2);
     }
 </style>
