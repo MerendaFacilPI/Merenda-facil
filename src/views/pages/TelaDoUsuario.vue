@@ -42,7 +42,7 @@
 }
 
 .nav-container {
-  display: flex;
+  display: flex; /*Permite que os elementos responsivos dentro de um contêiner */
   justify-content: space-between;
   align-items: center;
   height: 62px;
@@ -149,7 +149,7 @@
 
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
-  transform: translateX(0);
+  transform: translateX(0);/*Cria  */
 }
 
 .nav-container input[type="checkbox"]:checked ~ .lines .line1 {
@@ -165,7 +165,7 @@
 }
 
 .scaner{
-        display: flex;
+        display: flex; 
         align-items: center;
         justify-content: center;
         flex-direction: column;
