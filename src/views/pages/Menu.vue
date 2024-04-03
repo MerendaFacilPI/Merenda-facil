@@ -13,6 +13,7 @@
              <h1>Merenda Fácil</h1>
            </div>
            <div class="menu-items">
+             <li><RouterLink class="nav-item" to="/Usuario">Inicio</RouterLink></li>
              <li><RouterLink class="nav-item" to="/Altera">Altere sua senha</RouterLink></li>
              <li><RouterLink class="nav-item" to="/Cadastro">Cadastro de Aluno</RouterLink></li>
              <li><RouterLink class="nav-item" to="/Relatorio">Relatorio</RouterLink></li>
@@ -21,6 +22,7 @@
          </div>
        </div>
      </nav>
+     
  </template>
  
  <style scoped>

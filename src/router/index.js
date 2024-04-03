@@ -33,7 +33,6 @@ const router = createRouter({
       name: 'Relatorio',
       component: () => import('../views/pages/Relatorio.vue')
     },
-   
   ]
 })
 

@@ -1,22 +1,28 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
-<!-- eslint-disable vue/multi-word-component-names -->
-<script setup lang="ts">
+<script>
+import CustomMenu from './Menu.vue';
 
-
+export default {
+  name: 'DefinaSuaSenha',
+  components: {
+    CustomMenu
+  }
+}
 </script>
+
 <template>
+  <CustomMenu />
   <div class="login">
-  
     <h1>Altere Sua Senha!</h1>
     
     <input type="password" class="senha" placeholder="Digite sua nova senha">
     <input type="password" class="senha" placeholder="Digite novamente a senha">
     
     <button class="button">Salvar</button>
-    
   </div>
 </template>
+
 
 <style scoped>
 

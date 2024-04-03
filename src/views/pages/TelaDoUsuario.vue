@@ -16,6 +16,7 @@
             <h1>Merenda Fácil</h1>
           </div>
           <div class="menu-items">
+            <li><RouterLink class="nav-item" to="/Usuario">Inicio</RouterLink></li>
             <li><RouterLink class="nav-item" to="/Altera">Altere sua senha</RouterLink></li>
             <li><RouterLink class="nav-item" to="/Cadastro">Cadastro de Aluno</RouterLink></li>
             <li><RouterLink class="nav-item" to="/Relatorio">Relatorio</RouterLink></li>
@@ -25,12 +26,20 @@
       </div>
     </nav>
     <div class="scaner">
-        <button class="button"><a href="#">Scanear</a></button>
+        <button class="button"><a href="#">Iniciar coletagem</a></button>
+    </div>
+
+    <div class="container3" style="">
+        <h2 style="height:260px">Registro de alunos(a):</h2>
     </div>
 </template>
 
 <style scoped>
     /* Edições dos estilos da parte superior */
+i{
+  color: #069aef;
+  padding-right: 5px;
+}
 .container {
   max-width: 900px;
   width: 100%;
@@ -114,18 +123,18 @@
 
 .nav-container .lines .line2 {
   transition: transform 0.2s ease-in-out;
-}
+}/*Rotação do menu*/
 
 .nav-container .lines .line3 {
   transform-origin: 0% 100%;
   transition: transform 0.4s ease-in-out;
-}
+}/*Rotação do menu*/
 
 .navbar .menu-items {
-  padding-top: 60px;
-  height: 50vh;
+  padding-top: 60px;/*espaçamento interno superior*/
+  height: 50vh;/*Determina a altura da área */
   width: 100%;
-  transform: translate(-150%);
+  transform: translate(-150%);/*Oculta as opções do menu*/
   display: flex;
   flex-direction: column;
   margin-left: -40px;
@@ -149,27 +158,27 @@
 
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
-  transform: translateX(0);/*Cria  */
-}
+  transform: translateX(0);
+}/*Rotação das linhas*/
 
 .nav-container input[type="checkbox"]:checked ~ .lines .line1 {
   transform: rotate(45deg);
-}
+}/*Rotação das linhas*/
 
 .nav-container input[type="checkbox"]:checked ~ .lines .line2 {
   transform: scaleY(0);
-}
+}/*Rotação das linhas*/
 
 .nav-container input[type="checkbox"]:checked ~ .lines .line3 {
   transform: rotate(-45deg);
-}
+}/*Rotação das linhas*/
 
 .scaner{
         display: flex; 
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 50vh;
     }
     .scaner button {
         border: none;
@@ -188,6 +197,7 @@
     background-color: white;
     transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
     cursor: pointer;
+    align-self: auto;
     }
 
     .button:hover {
