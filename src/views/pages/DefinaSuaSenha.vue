@@ -1,5 +1,34 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
+<template>
+  <div class="contener2" >
+    <CustomMenu />
+    <h2>Coletor de Dados</h2>
+    <form @submit.prevent="addData">
+      <label for="age">RA:</label>
+      <input type="number" v-model.number="age">
+      <label for="name">Nome:</label>
+      <input type="text" v-model="name">
+      <button type="submit">Adicionar</button>
+    </form>
+    <table id="data-grid">
+      <thead>
+        <tr>
+          <th>RA</th>
+          <th>Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(data, index) in dataList" :key="index">
+          <td>{{ data.age }}</td>
+          <td>{{ data.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button @click="saveDataList">Salvar Lista</button> 
+  </div>
+</template>
+
 <script>
 import CustomMenu from './Menu.vue';
 
@@ -7,76 +36,38 @@ export default {
   name: 'DefinaSuaSenha',
   components: {
     CustomMenu
+  },
+  data() {
+    return {
+      name: '',
+      age: '',
+      dataList: []
+    };
+  },
+  methods: {
+    addData() {
+      if (this.name.trim() !== '' && this.age !== '') {
+        this.dataList.push({
+           age: this.age,
+          name: this.name
+        });
+
+        // Limpar os campos do formulário após adicionar os dados
+        this.age = '';
+        this.name = '';
+
+      } else {
+        alert("Por favor, preencha todos os campos.");
+      }
+    },
+    saveDataList() {
+      // Aqui você pode implementar a lógica para salvar a lista de dados
+      console.log("Lista de dados salva:", this.dataList);// Após implantar o banco de dados e ao clicar em salvar mostrarar essa msm
+    }
   }
 }
 </script>
 
-<template>
-  <CustomMenu />
-  <div class="login">
-    <h1>Altere Sua Senha!</h1>
-    
-    <input type="password" class="senha" placeholder="Digite sua nova senha">
-    <input type="password" class="senha" placeholder="Digite novamente a senha">
-    
-    <button class="button">Salvar</button>
-  </div>
-</template>
-
-
 <style scoped>
 
-.logo {
-    background-color: #e9ecee;
-}
-
-.login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Defina uma altura mínima de 100% da altura da viewport */
-}
-
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  text-align: center;
-}
-
-.caixa1 {
-  width: 300px;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 3ch;
-}
-
-.senha {
-  width: 300px;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 3ch;
-}
-
-.button {
-  width: 200px;
-  padding: 10px;
-  margin-top: 10px;
-  border: solid 1px rgb(126, 126, 241);
-  border-radius: 20px;
-  color: rgb(94, 94, 133);
-  background-color: white;
-  transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: rgb(48, 164, 231);
-  color: white;
-  transform: scale(1.2);
-}
-
-p {
-  font-size: 1rem;
-}
 </style>

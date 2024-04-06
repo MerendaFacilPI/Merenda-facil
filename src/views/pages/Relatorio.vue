@@ -11,7 +11,17 @@ export default {
 </script>
 <template>
     <CustomMenu />
-    <h1>Relatorio</h1>
+
+    <div class="containerR">
+      <h1>Relatorio</h1>
+        <!-- Conteúdo do relatório aqui -->
+    </div>
 </template>
 
+<style scoped>
+.containerR {
+    margin-top: 150px; /* Adicionando margem superior para afastar do topo */
+    padding-left: 30px; /* Adicionando preenchimento para afastar do lado esquerdo */
+}
+</style>
 

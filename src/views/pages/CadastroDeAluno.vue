@@ -7,28 +7,66 @@ export default {
   name: 'CadastroDeAluno',
   components: {
     CustomMenu
+  },
+  data() {
+    return {
+      searchTerm: '',
+      alunos: [
+        '1235 - Maria Aparecida',
+        '8554 - Daniel silva',
+        '5555 - Alex Santos',
+        '6325 - Filipe silva',
+        '5244 - Gabriela Fernada',
+        '3255 - Monkey Alex ',
+        '8745 - José silva',
+        '3215 - Whale Ribeiro',
+        '4545 - Aligator silva',
+        '5325 - Donkey',
+        '7412 - Horse',
+        '8725 - José silva Santos'
+      ]
+    }
+  },
+  methods: {
+    searchDados() {
+      const searchTerm = this.searchTerm.toLowerCase();
+      return this.alunos.filter(aluno => aluno.toLowerCase().includes(searchTerm));
+    },
+    deleteAluno(index) {
+      this.alunos.splice(index, 1);
+    }
   }
 }
 </script>
-<template>
-    <CustomMenu />
-    
-    <div class="container1">
-        <h1 style="height:100%; text-align: center;">Cadastrar alunos (a)</h1>
-    </div>
-    <div class="container2">
-        <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
-        <input type="file" />
-        <button class="button">Salvar Arquivo</button>
-    </div>
 
-    <div class="container3" style="">
-        <h2 style="height:260px">Registro de alunos(a):</h2>
+<template>
+    <div>
+        <CustomMenu />
+        
+        <div class="container1">
+            <h1 style="height:100%; text-align: center;">Cadastrar alunos (a)</h1>
+        </div>
+        <div class="container2">
+            <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+            <input type="file" />
+            <button class="button">Salvar Arquivo</button>
+        </div>
+
+        <div class="container3" style="">
+            <h2 style="height:50px">Registro de alunos(a):</h2>
+            <input class="pesquisa" v-model="searchTerm" type="text" name="search" placeholder="Pesquisar por RA">
+            <br>
+            <ol id="list" class="no-list-style">
+                <li v-for="(aluno, index) in searchDados()" :key="index" class="dados">
+                  {{ aluno }}
+                  <button @click="deleteAluno(index)" class="delete-button">Excluir</button>
+                </li>
+            </ol>
+        </div>
     </div>
 </template>
 
 <style scoped>
-
 .container1{
     width:100%; 
     float:left; 
@@ -40,12 +78,17 @@ export default {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px; /* Adicionando margem inferior para separar do próximo elemento */
-    padding: 138px; /* Adicionando padding para espaçamento interno */
+    padding: 110px; /* Adicionando padding para espaçamento interno */
 }
 .container3 {
-    background-color:blue;
      width:100%; 
      float:right;
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; /* Adicionando margem inferior para separar do próximo elemento */
+
 }
 
 input[type="hidden"],
@@ -71,7 +114,42 @@ input[type="file"] {
   color: white;
   transform: scale(1.2);
 }
+
+.pesquisa{   
+     padding:15px;
+     border-radius: 30px;
+   }
+ 
+   input[type=text] {
+      width: 30%;
+      -webkit-transition: width 0.15s ease-in-out;
+      transition: width 0.15s ease-in-out;
+   }
+ 
+  #list{
+    font-size:  1.5em;
+   }
+ 
+.dados{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+  }
+.no-list-style {
+  list-style-type: none;
+}
+
+.delete-button {
+  padding: 8px 20px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+}
 </style>
-
-
-

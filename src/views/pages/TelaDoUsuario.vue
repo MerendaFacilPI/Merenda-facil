@@ -1,10 +1,8 @@
-<script setup lang="js">
-
-</script>
-
 <template>
-   <nav class="menu-flutuante">
-      <div class="navbar">
+  <div>
+     <nav class="menu-flutuante">
+        <!-- Seu menu aqui -->
+        <div class="navbar">
         <div class="container nav-container">
             <input class="checkbox" type="checkbox" name="" id="" />
             <div class="lines">
@@ -24,15 +22,61 @@
           </div>
         </div>
       </div>
-    </nav>
-    <div class="scaner">
-        <button class="button"><a href="#">Iniciar coletagem</a></button>
-    </div>
+     </nav>
+     <div class="scaner">
+        <button class="button" @click="startCollection">Iniciar coletagem</button>
+     </div>
 
-    <div class="container3" style="">
-        <h2 style="height:260px">Registro de alunos(a):</h2>
-    </div>
+     <div class="container3">
+        <h2 style="height:50px">Registro de alunos(a):</h2>
+        <table id="data-grid">
+           <thead>
+              <tr>
+                 <th>RA</th>
+                 <th>Nome</th>
+              </tr>
+           </thead>
+           <tbody>
+              <tr v-for="(data, index) in dataList" :key="index">
+                <td>{{ data.age }}</td> 
+                <td>{{ data.name }}</td>
+              </tr>
+           </tbody>
+        </table>
+        <button class="button2" @click="saveDataList">Salvar Lista</button>
+     </div>
+     
+  </div>
+  
 </template>
+
+<script setup lang="js">
+import { ref } from 'vue';
+
+const dataList = ref([]);
+const age = ref('');
+const name = ref('');
+
+function startCollection() {
+   // Aqui você pode implementar a lógica para começar a coletar dados
+   // Por exemplo, adicionar uma chamada de API ou iniciar um processo de coleta de dados
+   console.log("Coletagem iniciada!");
+}
+
+function addData() {
+   if (name.value.trim() !== '' && age.value !== '') {
+       dataList.value.push({
+           age: age.value,
+           name: name.value
+       });
+       // Limpar os campos do formulário após adicionar os dados
+       age.value = '';
+       name.value = '';
+   } else {
+       alert("Por favor, preencha todos os campos.");
+   }
+}
+</script>
 
 <style scoped>
     /* Edições dos estilos da parte superior */
@@ -174,17 +218,17 @@ i{
 }/*Rotação das linhas*/
 
 .scaner{
-        display: flex; 
-        align-items: center;
-        justify-content: center;
+        display: flex; /*Os elememtos ficam responsivos dentro do contenier */
+        align-items: center;/*Alinha no meio da pagina e dentro do contenier */
+        justify-content: center;/*Alinha no centro da pagina e dentro do contenier */
         flex-direction: column;
-        min-height: 50vh;
+        min-height: 50vh;/*Dintancia menima do top do contenier */
     }
     .scaner button {
-        border: none;
-        background-color: #0187a7;
-        padding: 15px 50px;
-        border-radius: 5px;
+        border: none;/*Sem borda */
+        background-color: #0187a7;/*Cor de incio do buttun sem passar o mause*/
+        padding: 15px 50px; /*Altura do button */
+        border-radius: 30px;
     }
 
     .button {
@@ -192,11 +236,10 @@ i{
     padding: 10px;
     margin-top: 10px;
     border: solid 1px rgb(126, 126, 241);
-    border-radius: 20px;
-    color: rgb(94, 94, 133);
+    color: rgb(246, 246, 248);
     background-color: white;
-    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
-    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;/*Faz o buttun crescer */
+    cursor: pointer;/*Cria uma mão quando o mause passar*/
     align-self: auto;
     }
 
@@ -205,4 +248,35 @@ i{
     color: white;
     transform: scale(1.2);
     }
+
+    .container3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .button2 {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
+    padding: 10px;
+    margin-top: 10px;
+    border: solid 1px rgb(231, 231, 236);
+    border-radius: 20px;
+    color: rgb(32, 81, 40);
+    background-color: rgb(231, 231, 236);
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+    cursor: pointer;
+    align-self: auto;
+    }
+    
+    .button2:hover {
+    background-color: rgb(22, 193, 76);
+    color: rgb(41, 28, 28);
+    transform: scale(1.2);
+    }
+
 </style>
