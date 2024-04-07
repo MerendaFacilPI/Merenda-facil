@@ -16,11 +16,6 @@ const router = createRouter({
       name: 'Usuario',
       component: () => import('../views/pages/TelaDoUsuario.vue')
     },
-    {
-      path: '/Altera',
-      name: 'DefinaSuaSenha',
-      component: () => import('../views/pages/DefinaSuaSenha.vue')
-    },
 
     {
       path: '/Cadastro',
