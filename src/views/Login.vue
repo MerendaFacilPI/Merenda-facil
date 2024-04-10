@@ -17,7 +17,6 @@
     <input type="password" class="senha" placeholder="Digite sua senha">
     
     <button class="button">Entrar</button>
-    <p>Esqueceu sua senha?<a href="">Clique Aqui.</a></p>
   </div>
 </template>
 
