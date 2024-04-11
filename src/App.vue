@@ -5,7 +5,7 @@
     <nav class="container-rota"><!-- Barra de navegação para as rotas -->
       <RouterLink to="/">Login</RouterLink>
       <RouterLink to="/Usuario">Tela do Usuário</RouterLink><!--É necesario criar esses rotas ("/" e "/Usuario". Rotas criadas na pasta: router/index.js-->
-    </nav>
+    </nav><!--Deletar toda  <nav class="container-rota"> ..!!conteudo!!... </nav> após criar junto ao banco de dados o login e senha dos usuarios (excluir apenas dessa pagina pois essas rotas são utilizadas em outras paginas)-->
   </div>
 </template>
 
