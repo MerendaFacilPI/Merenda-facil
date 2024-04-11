@@ -1,18 +1,18 @@
 
 <template>
-  <div class="container">
+  <div class="container"><!-- Define um contêiner para o conteúdo-->
     <RouterView />
-    <nav class="container-rota">
+    <nav class="container-rota"><!-- Barra de navegação para as rotas -->
       <RouterLink to="/">Login</RouterLink>
-      <RouterLink to="/Usuario">Tela do Usuário</RouterLink>
+      <RouterLink to="/Usuario">Tela do Usuário</RouterLink><!--É necesario criar esses rotas ("/" e "/Usuario". Rotas criadas na pasta: router/index.js-->
     </nav>
   </div>
 </template>
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Isso faz com que o elemento com a classe .container seja exibido como um contêiner flexível */
+  flex-direction: column;/*Sera organizado em uma coluna, empilhados verticalmente de cima para baixo */
   min-height: 100vh; /* Define a altura mínima do contêiner como 100% da altura da viewport */
   position: relative; /* Posição relativa para que o posicionamento absoluto da barra de navegação funcione */
 }

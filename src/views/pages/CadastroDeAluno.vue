@@ -1,13 +1,13 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script>
-import CustomMenu from './Menu.vue';
+import CustomMenu from './Menu.vue';/*Importa um componente chamado CustomMenu de um arquivo chamado Menu.vue. dentro da pages */
 
 export default {
-  name: 'CadastroDeAluno',
+  name: 'CadastroDeAluno',/*Define o nome do componente como CadastroDeAluno, ou seja, a propria pagina */
   components: {
     CustomMenu
-  },
+  },/*Declara o componente CustomMenu como um componente filho do CadastroDeAluno. */
   data() {
     return {
       searchTerm: '',
@@ -31,10 +31,10 @@ export default {
     searchDados() {
       const searchTerm = this.searchTerm.toLowerCase();
       return this.alunos.filter(aluno => aluno.toLowerCase().includes(searchTerm));
-    },
+    },/*é uma função que filtra a lista de alunos com base no termo de pesquisa */
     deleteAluno(index) {
       this.alunos.splice(index, 1);
-    }
+    }/*é uma função que exclui um aluno da lista com base no índice */
   }
 }
 </script>
