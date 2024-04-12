@@ -10,8 +10,8 @@
     <br>
     <select type="text" class="caixa1"><!--Foi colocado type="text" passando que o tipo será texto-->
       <option>Qual seu Email?</option>
-      <option>administrador@gmail.com</option>
-      <option>secretaria@gmail.com</option>
+      <option>adminmerendaescolar@gmail.com</option>
+      <option>inspetormerendaescolar@gmail.com</option>
     </select>
     
     <input type="password" class="senha" placeholder="Digite sua senha"><!--input é um elemento HTML usado para criar campos de entrada. type="password": O atributo 'type' especifica o tipo de entrada que será aceito pelo campo.-->
