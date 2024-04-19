@@ -49,7 +49,7 @@ export default {
       <option>7° Ano</option>
       </select>
 
-      <button class="buttonPDF" @click="gerarRelatorio">Gerar Relatório em PDF</button>
+      <button class="buttonPDF" @click="gerarRelatorio">Gerar Relatório em PDF</button><!-- Botão para gerar o relatório em PDF -->
   </div>
 </template>
 
