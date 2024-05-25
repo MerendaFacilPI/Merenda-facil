@@ -1,13 +1,13 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script>
-import CustomMenu from './Menu.vue';/*Importa um componente chamado CustomMenu de um arquivo chamado Menu.vue. dentro da pages */
+import CustomMenu from './Menu.vue';
 
 export default {
-  name: 'CadastroDeAluno',/*Define o nome do componente como CadastroDeAluno, ou seja, a propria pagina */
+  name: 'CadastroDeAluno',
   components: {
     CustomMenu
-  },/*Declara o componente CustomMenu como um componente filho do CadastroDeAluno. */
+  },
   data() {
     return {
       searchTerm: '',
@@ -17,87 +17,111 @@ export default {
         '5555 - Alex Santos',
         '6325 - Filipe silva',
         '5244 - Gabriela Fernada',
-        '3255 - Monkey Alex ',
+        '3255 - Monkey Alex',
         '8745 - José silva',
         '3215 - Whale Ribeiro',
         '4545 - Aligator silva',
         '5325 - Donkey',
         '7412 - Horse',
         '8725 - José silva Santos'
-      ]
+      ],
+      currentIndex: 0, // New property to track the current index
+      displayedAlunos: [] // New property to store the list of displayed students
     }
   },
   methods: {
     searchDados() {
       const searchTerm = this.searchTerm.toLowerCase();
       return this.alunos.filter(aluno => aluno.toLowerCase().includes(searchTerm));
-    },/*é uma função que filtra a lista de alunos com base no termo de pesquisa */
+    },
     deleteAluno(index) {
       this.alunos.splice(index, 1);
-    }/*é uma função que exclui um aluno da lista com base no índice */
+    },
+    showNextAluno() {
+      const reverseIndex = this.alunos.length - 1 - this.currentIndex;
+      if (reverseIndex >= 0) {
+        this.displayedAlunos.push(this.alunos[reverseIndex]);
+        this.currentIndex += 1;
+      }
+    },
+    saveList() {
+      // Logic to save the list, for example, sending it to a server or saving to a file
+      console.log('Lista de alunos:', this.displayedAlunos);
+      alert('Lista de alunos salva!');
+    }
   }
 }
 </script>
 
-<template>
-    <div>
-        <CustomMenu />
-        
-        <div class="container1">
-            <h1 style="height:100%; text-align: center;">Cadastrar alunos (a)</h1>
-        </div>
-        <div class="container2">
-            <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
-            <input type="file" />
-            <button class="button">Salvar Arquivo</button>
-        </div>
 
-        <div class="container3" style="">
-            <h2 style="height:50px">Registro de alunos(a):</h2>
-            <input class="pesquisa" v-model="searchTerm" type="text" name="search" placeholder="Pesquisar por RA">
-            <br>
-            <ol id="list" class="no-list-style">
-                <li v-for="(aluno, index) in searchDados()" :key="index" class="dados">
-                  {{ aluno }}
-                  <button @click="deleteAluno(index)" class="delete-button">Excluir</button>
-                </li>
-            </ol>
-        </div>
+<template>
+  <div>
+    <CustomMenu />
+    
+    <div class="container2">
+     
+      <button class="button">Iniciar Coletagem</button>
     </div>
+
+    <div class="container3">
+      <h2 style="height:50px">Registro de alunos(a):</h2>
+      <input class="pesquisa" v-model="searchTerm" type="text" name="search" placeholder="Pesquisar por RA">
+      <br>
+      <!-- Removed the initial list rendering -->
+    </div>
+
+    <div class="container4">
+      
+      <ul>
+        <li v-for="(aluno, index) in displayedAlunos" :key="index" class="dados">
+          {{ aluno }}
+        </li>
+      </ul>
+      <button @click="saveList" class="save-list-button" v-if="currentIndex >= alunos.length && displayedAlunos.length > 0">Salvar lista</button>
+      <button @click="showNextAluno" class="next-aluno-button" v-if="currentIndex < alunos.length">Salvar lista</button>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.container1{
-    width:100%; 
-    float:left; 
-    margin-bottom:10px;
+.container1 {
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
 }
 .container2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px; /* Adicionando margem inferior para separar do próximo elemento */
-    padding: 110px; /* Adicionando padding para espaçamento interno */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 110px;
 }
 .container3 {
-     width:100%; 
-     float:right;
-     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px; /* Adicionando margem inferior para separar do próximo elemento */
-
+  width: 100%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.container4 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 input[type="hidden"],
 input[type="file"] {
-    width: 300px;
-    padding: 10px;
+  width: 300px;
+  padding: 10px;
 }
 
-.button {
+.button, .next-aluno-button, .save-list-button {
   width: 200px;
   padding: 10px;
   margin-top: 10px;
@@ -109,33 +133,33 @@ input[type="file"] {
   cursor: pointer;
 }
 
-.button:hover {
+.button:hover, .next-aluno-button:hover, .save-list-button:hover {
   background-color: rgb(48, 164, 231);
   color: white;
   transform: scale(1.2);
 }
 
-.pesquisa{   
-     padding:15px;
-     border-radius: 30px;
-   }
- 
-   input[type=text] {
-      width: 30%;
-      -webkit-transition: width 0.15s ease-in-out;
-      transition: width 0.15s ease-in-out;
-   }
- 
-  #list{
-    font-size:  1.5em;
-   }
- 
-.dados{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 10px;
-  }
+.pesquisa {
+  padding: 15px;
+  border-radius: 30px;
+}
+
+input[type="text"] {
+  width: 30%;
+  transition: width 0.15s ease-in-out;
+}
+
+#list {
+  font-size: 1.5em;
+}
+
+.dados {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
 .no-list-style {
   list-style-type: none;
 }
