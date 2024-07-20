@@ -1,7 +1,7 @@
 <template>
   <div>
      <nav class="menu-flutuante">
-        <!-- Seu menu aqui -->
+        
         <div class="navbar">
         <div class="container nav-container">
             <input class="checkbox" type="checkbox" name="" id="" />
