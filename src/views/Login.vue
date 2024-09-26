@@ -1,22 +1,46 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+import { ref } from 'vue';
+import axios from 'axios';
 
+const selectedEmail = ref('');
+const password = ref('');
+
+const handleLogin = async () => {
+  try {
+    const response = await axios.post('http://localhost:3000/login', {
+      email: selectedEmail.value,
+      senha: password.value,
+    });
+    
+    if (response.data.success) {
+      alert('Login realizado com sucesso!');
+      // Redirecione para outra página ou faça o que for necessário após o login
+    } else {
+      alert('Login ou senha inválidos!');
+    }
+  } catch (error) {
+    console.error('Erro ao tentar logar:', error);
+    alert('Ocorreu um erro ao tentar logar.');
+  }
+};
 </script>
+
 <template>
   <div class="login">
     <img alt="Vue logo" class="logo" src="@/assets/Logofood.svg" width="122" height="122"/>
     <h1>Merenda Fácil</h1>
     <h2>Faça seu Login</h2>
     <br>
-    <select type="text" class="caixa1"><!--Foi colocado type="text" passando que o tipo será texto-->
-      <option>Qual seu Email?</option>
+    <select v-model="selectedEmail" class="caixa1">
+      <option disabled value="">Qual seu Email?</option>
       <option>adminmerendaescolar@gmail.com</option>
       <option>inspetormerendaescolar@gmail.com</option>
     </select>
     
-    <input type="password" class="senha" placeholder="Digite sua senha"><!--input é um elemento HTML usado para criar campos de entrada. type="password": O atributo 'type' especifica o tipo de entrada que será aceito pelo campo.-->
+    <input type="password" v-model="password" class="senha" placeholder="Digite sua senha">
     
-    <button class="button">Entrar</button>
+    <button @click="handleLogin" class="button">Entrar</button>
   </div>
 </template>
 

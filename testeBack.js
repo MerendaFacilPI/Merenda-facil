@@ -13,51 +13,37 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configurando a conexão com o banco de dados MySQL
 const connection = mysql.createConnection({
-  host: 'localhost', // Endereço do seu servidor MySQL
-  user: 'inserir seu usuario wesley',
-  password: 'inserir sua senha',
-  database: 'merendaFacil'
+  host: '3306', // Endereço do seu servidor MySQL
+  user: 'root', // Substitua pelo seu usuário MySQL
+  password: '1416225235Gn@', // Substitua pela sua senha MySQL
+  database: 'merendaFacil' // Substitua pelo nome do seu banco de dados
 });
 
 // Conectando ao banco de dados
 connection.connect(err => {
   if (err) {
-    console.error('Erro ao conectar ao banco de dados:', err);
+    console.error('Erro ao conectar ao banco de dados:', err); // Exibe o erro se a conexão falhar
     return;
   }
-  console.log('Conexão bem-sucedida ao banco de dados');
+  console.log('Conexão bem-sucedida ao banco de dados'); // Exibe sucesso na conexão
 });
 
-// Rota para pesquisar alunos por código de barras
-app.get('/T_telaInicial/:RA', (req, res) => {
-  const codigoDeBarras = req.params.codigoDeBarras;
+// Rota para login
+app.post('/login', (req, res) => {
+  const { email, senha } = req.body;
 
-  // Consulta ao banco de dados para buscar aluno pelo código de barras
-  const sql = 'SELECT * FROM T_telaInicial WHERE RA = ?';
-  connection.query(sql, [codigoDeBarras], (err, results) => {
+  const sql = 'SELECT * FROM T_login WHERE email = ? AND senha = ?';
+  connection.query(sql, [email, senha], (err, results) => {
     if (err) {
       console.error('Erro ao executar consulta:', err);
-      res.status(500).send('Erro interno do servidor');
-      return;
+      return res.status(500).json({ success: false, message: 'Erro ao consultar o banco de dados' });
     }
-    res.json(results); // Retorna os resultados em formato JSON
-  });
-});
 
-// Rota para salvar aluno com a data fornecida
-app.post('/T_telaInicial', (req, res) => {
-  const aluno = req.body;
-  const dataRetirada = new Date(); // Data atual
-
-  // Inserindo aluno no banco de dados
-  const sql = 'INSERT INTO T_telaInicial (RA, serie, nome_aluno, restricaoAlimentar, numero_de_refeicoes, dataRetirada)';
-  connection.query(sql, [aluno.RA, aluno.serie, aluno.nome_aluno, aluno.restricaoAlimentar, aluno.numero_de_refeicoes, dataRetirada], (err, result) => {
-    if (err) {
-      console.error('Erro ao inserir aluno:', err);
-      res.status(500).send('Erro interno do servidor');
-      return;
+    if (results.length > 0) {
+      res.json({ success: true, message: 'Login bem-sucedido' });
+    } else {
+      res.json({ success: false, message: 'Email ou senha incorretos' });
     }
-    res.send('Aluno salvo com sucesso');
   });
 });
 
