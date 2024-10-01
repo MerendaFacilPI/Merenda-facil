@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { ref } from 'vue';
+<<<<<<< Updated upstream
 import axios from 'axios';
 
 const selectedEmail = ref('');
@@ -22,6 +23,37 @@ const handleLogin = async () => {
   } catch (error) {
     console.error('Erro ao tentar logar:', error);
     alert('Ocorreu um erro ao tentar logar.');
+=======
+
+// Variáveis reativas para armazenar o email, senha e mensagem de erro do usuário
+const email = ref('adminmerendaescolar@gmail.com');
+const password = ref('adminescolar');
+const errorMessage = ref('');
+
+// Função para lidar com o evento de clique no botão de login
+const handleLogin = async () => {
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value
+      })
+    });
+
+    if (response.ok) {
+      window.location.href = '/TelaDoUsuario'; // Redireciona para a tela do usuário após o login bem-sucedido
+    } else {
+      const data = await response.json();
+      errorMessage.value = data.message;
+    }
+  } catch (error) {
+    console.error('Erro ao fazer login:', error);
+    errorMessage.value = 'Erro interno do servidor';
+>>>>>>> Stashed changes
   }
 };
 </script>
@@ -32,17 +64,35 @@ const handleLogin = async () => {
     <h1>Merenda Fácil</h1>
     <h2>Faça seu Login</h2>
     <br>
+<<<<<<< Updated upstream
     <select v-model="selectedEmail" class="caixa1">
       <option disabled value="">Qual seu Email?</option>
+=======
+    <!-- Vincula o valor do email à variável reativa email -->
+    <select v-model="email" class="caixa1">
+      <option disabled selected>Qual seu Email?</option>
+>>>>>>> Stashed changes
       <option>adminmerendaescolar@gmail.com</option>
       <option>inspetormerendaescolar@gmail.com</option>
     </select>
     
+<<<<<<< Updated upstream
     <input type="password" v-model="password" class="senha" placeholder="Digite sua senha">
     
     <button @click="handleLogin" class="button">Entrar</button>
+=======
+    <!-- Vincula o valor da senha à variável reativa password -->
+    <input v-model="password" type="password" class="senha" placeholder="Digite sua senha">
+    
+    <!-- Adiciona o evento @click para chamar handleLogin quando o botão for clicado -->
+    <button @click="handleLogin" class="button">Entrar</button>
+    
+    <!-- Exibe a mensagem de erro, se houver -->
+    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+>>>>>>> Stashed changes
   </div>
 </template>
+
 
 <style scoped>
 .login {
